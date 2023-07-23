@@ -1,0 +1,59 @@
+﻿@page
+@model LoginForm.Pages.Users.IndexModel
+@{
+	Layout = "~/Pages/Shared/_Layout1.cshtml";
+
+
+}
+<style>
+	.dg{
+		margin-top:10px;
+		margin-bottom:10px;
+		padding-top:10px;
+		width:100px;
+		text-align:center;
+	}
+</style>
+
+<br />
+<a class='btn btn-primary btn-sm dg' href='/Users/Create'>+ New User</a>
+
+<h2>List of Users</h2>
+
+<table class="table table-bordered table-hover">
+
+	<thead>
+		<tr class='table-dark'>
+			<th>FirstName</th>
+			<th>LastName</th>
+			<th>Email</th>
+			<th>Address</th>
+			<th>Account Created On</th>
+			<th>Manager</th>
+			<th>Action</th>
+		</tr>
+	</thead>
+	<tbody>
+
+		@foreach(var item in Model.listUsers)
+		{
+			<tr class="table-success">
+				<td>@item.firstName</td>
+				<td>@item.lastName</td>
+				<td>@item.email</td>
+				<td>@item.address</td>
+				<td>@item.created_at</td>
+				<td>@item.manager</td>
+				<td>
+					<a class="btn btn-primary btn-sm" href="/Users/Edit?id=@item.id">Edit</a>
+					<a class="btn btn-danger btn-sm" href="/Users/Delete?id=@item.id">Delete</a>
+				</td>
+			</tr>
+			
+		}
+
+
+	</tbody>
+
+
+</table>
